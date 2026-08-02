@@ -1,18 +1,25 @@
-# Lukulu Academy DAW Learning Lab
+﻿# Lukulu Academy DAW Learning Lab
 
 Lukulu Academy DAW Learning Lab is an original browser-based Digital Audio Workstation learning simulator. The project is designed to help students understand music-production workflows through guided, educational interface patterns before they move into a full professional DAW.
 
-This first phase establishes a clean, scalable project foundation only. It does not include a complete audio engine, full sequencing engine, real recording features, commercial sample packs, or any copied DAW implementation.
+This phase establishes a clean, scalable project foundation and introduces the first safe interactive learning prototype. It does not include a complete audio engine, full sequencing engine, real recording features, commercial sample packs, or any copied DAW implementation.
 
 ## Educational purpose
 
-The simulator will support beginner-friendly DAW lessons for Lukulu Academy students, including:
+The simulator supports beginner-friendly DAW lessons for Lukulu Academy students, including:
 
 - Understanding transport controls and playback flow
 - Building simple rhythm and channel patterns
 - Learning arrangement and timeline concepts
 - Practicing mixer balance, levels, and routing concepts
 - Completing guided production assignments that connect browser practice with real-world DAW work
+
+## Current product areas
+
+- Dashboard overview
+- Guided lessons page
+- Simulator workspace
+- Rhythm Lab MVP for 8-step pattern practice
 
 ## Technology stack
 
@@ -23,7 +30,8 @@ The simulator will support beginner-friendly DAW lessons for Lukulu Academy stud
 - npm
 - ESLint
 - Prettier
-- Git/GitHub-ready project configuration
+- GitHub Actions CI
+- Lightweight hash routing without an external router dependency
 
 ## Local setup
 
@@ -77,6 +85,16 @@ Future phases may add original Lukulu Academy learning modules such as:
 5. Automation and movement lessons
 6. Audio review assignments and tutor feedback
 7. Browser-based exercises that lead into real-DAW assignments
+
+## GitHub project hygiene
+
+The repository includes:
+
+- CI workflow for formatting, linting, and production builds
+- Dependabot configuration for npm and GitHub Actions
+- Pull request template
+- Bug report issue template
+- Feature request issue template with IP-boundary reminder
 
 ## Intellectual-property boundaries
 
