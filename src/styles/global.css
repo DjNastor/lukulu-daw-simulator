@@ -1,0 +1,363 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  background: #08090d;
+  color: #f7f2e8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --surface: rgba(22, 24, 32, 0.86);
+  --surface-strong: rgba(33, 36, 48, 0.96);
+  --line: rgba(255, 255, 255, 0.1);
+  --muted: #a8adbd;
+  --accent: #f7b733;
+  --accent-strong: #ff6b35;
+  --green: #49d17c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(247, 183, 51, 0.16), transparent 32rem),
+    radial-gradient(circle at bottom right, rgba(255, 107, 53, 0.12), transparent 28rem),
+    #08090d;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.65rem 0.95rem;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(247, 183, 51, 0.55);
+  background: rgba(247, 183, 51, 0.1);
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.4rem, 2vw, 2.25rem);
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  padding: 1rem;
+  gap: 0.85rem;
+}
+
+.top-header,
+.main-toolbar,
+.status-bar,
+.panel {
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(18px);
+}
+
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 1.4rem;
+  background: linear-gradient(135deg, rgba(30, 32, 42, 0.92), rgba(16, 18, 25, 0.94));
+  padding: 1rem 1.2rem;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.header-actions,
+.main-toolbar,
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.project-badge {
+  border: 1px solid rgba(73, 209, 124, 0.28);
+  border-radius: 999px;
+  color: var(--green);
+  padding: 0.55rem 0.75rem;
+}
+
+.main-toolbar {
+  overflow-x: auto;
+  border-radius: 1.1rem;
+  background: rgba(13, 15, 21, 0.78);
+  padding: 0.7rem;
+}
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: minmax(14rem, 18rem) minmax(0, 1fr) minmax(13rem, 17rem);
+  gap: 0.85rem;
+  min-height: 0;
+}
+
+.center-stage,
+.work-panels {
+  display: grid;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.center-stage {
+  grid-template-rows: auto 1fr;
+}
+
+.work-panels {
+  grid-template-rows: minmax(12rem, 0.42fr) minmax(18rem, 1fr);
+}
+
+.panel {
+  overflow: hidden;
+  border-radius: 1.15rem;
+  background: var(--surface);
+  padding: 1rem;
+}
+
+.transport-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--surface-strong);
+}
+
+.transport-buttons {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.transport-buttons button {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  padding: 0;
+}
+
+.browser-list,
+.channel-list,
+.playlist-lanes,
+.mixer-strips {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.browser-list {
+  list-style: none;
+  padding: 0;
+}
+
+.browser-list li,
+.channel-row,
+.playlist-lane,
+.mixer-strip {
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.browser-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem;
+  color: var(--muted);
+}
+
+.folder-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 0.2rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+}
+
+.channel-row {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem;
+}
+
+.step-grid,
+.timeline-ruler {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.35rem;
+}
+
+.step {
+  min-height: 1.8rem;
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.step.active {
+  background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+}
+
+.timeline-ruler {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.playlist-lane {
+  position: relative;
+  min-height: 3.4rem;
+  padding: 0.7rem;
+}
+
+.clip {
+  position: absolute;
+  top: 0.85rem;
+  bottom: 0.85rem;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, rgba(247, 183, 51, 0.9), rgba(255, 107, 53, 0.72));
+}
+
+.clip-1 {
+  left: 24%;
+  width: 22%;
+}
+
+.clip-2 {
+  left: 38%;
+  width: 36%;
+}
+
+.clip-3 {
+  left: 12%;
+  width: 18%;
+}
+
+.clip-4 {
+  left: 68%;
+  width: 20%;
+}
+
+.mixer-strips {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mixer-strip {
+  display: grid;
+  justify-items: center;
+  gap: 0.7rem;
+  min-height: 10rem;
+  padding: 0.75rem;
+}
+
+.meter {
+  display: flex;
+  align-items: end;
+  width: 0.65rem;
+  height: 5rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.meter span {
+  width: 100%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, var(--green), var(--accent));
+}
+
+.fader {
+  width: 70%;
+  height: 0.35rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.status-bar {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-radius: 0.9rem;
+  background: rgba(13, 15, 21, 0.85);
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 0.75rem 1rem;
+}
+
+@media (max-width: 1080px) {
+  .workspace-grid {
+    grid-template-columns: 15rem minmax(0, 1fr);
+  }
+
+  .mixer-area {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    padding: 0.65rem;
+  }
+
+  .top-header,
+  .transport-panel,
+  .workspace-grid,
+  .channel-row {
+    grid-template-columns: 1fr;
+  }
+
+  .top-header,
+  .transport-panel {
+    align-items: stretch;
+  }
+
+  .top-header,
+  .header-actions,
+  .transport-panel,
+  .workspace-grid {
+    display: grid;
+  }
+}
