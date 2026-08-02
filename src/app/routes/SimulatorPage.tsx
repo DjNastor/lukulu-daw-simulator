@@ -1,5 +1,5 @@
-﻿import { RhythmLab } from '../../features/rhythm-lab/RhythmLab';
+﻿import { DawWorkspace } from '../../features/daw-workspace/DawWorkspace';
 
 export function SimulatorPage() {
-  return <RhythmLab />;
+  return <DawWorkspace />;
 }

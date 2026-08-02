@@ -1,8 +1,8 @@
-﻿# Lukulu Academy DAW Learning Lab
+# Lukulu Academy DAW Learning Lab
 
 Lukulu Academy DAW Learning Lab is an original browser-based Digital Audio Workstation learning simulator. The project is designed to help students understand music-production workflows through guided, educational interface patterns before they move into a full professional DAW.
 
-This phase establishes a clean, scalable project foundation and introduces the first safe interactive learning prototype. It does not include a complete audio engine, full sequencing engine, real recording features, commercial sample packs, or any copied DAW implementation.
+This phase establishes a clean, scalable project foundation and introduces a richer original Lukulu-DAW simulator workspace for educational practice. It does not include a complete audio engine, full sequencing engine, real recording features, commercial sample packs, or any copied DAW implementation.
 
 ## Educational purpose
 
@@ -19,7 +19,7 @@ The simulator supports beginner-friendly DAW lessons for Lukulu Academy students
 - Dashboard overview
 - Guided lessons page
 - Simulator workspace
-- Rhythm Lab MVP for 8-step pattern practice
+- Premium Lukulu-DAW simulator workspace with arrangement, channel rack, mixer, piano roll, AI assistant, lesson guidance, and rhythm-practice foundations
 
 ## Technology stack
 
