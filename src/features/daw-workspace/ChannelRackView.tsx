@@ -1,6 +1,18 @@
-﻿import { channelTracks } from './workspaceData';
+﻿import type { ChannelTrack } from './workspaceData';
 
-export function ChannelRackView() {
+interface ChannelRackViewProps {
+  activeStepCount: number;
+  onResetPattern: () => void;
+  onToggleStep: (trackId: string, stepIndex: number) => void;
+  tracks: ChannelTrack[];
+}
+
+export function ChannelRackView({
+  activeStepCount,
+  onResetPattern,
+  onToggleStep,
+  tracks,
+}: ChannelRackViewProps) {
   return (
     <section
       className="daw-panel channel-rack-view"
@@ -9,9 +21,12 @@ export function ChannelRackView() {
       <div className="panel-titlebar">
         <div>
           <h2>Channel Rack</h2>
-          <span>Sampler</span>
+          <span>{activeStepCount} active steps</span>
         </div>
         <div className="mini-controls">
+          <button className="ghost-button" type="button" onClick={onResetPattern}>
+            Reset
+          </button>
           <span>Swing</span>
           <input
             type="range"
@@ -31,7 +46,7 @@ export function ChannelRackView() {
         </div>
       </div>
       <div className="channel-rack-table">
-        {channelTracks.map((track) => (
+        {tracks.map((track) => (
           <div className="daw-channel-row" key={track.id}>
             <div className="channel-name">
               <span>{track.icon}</span>
@@ -51,7 +66,9 @@ export function ChannelRackView() {
                   className={active ? 'active' : undefined}
                   style={active ? { backgroundColor: track.color } : undefined}
                   key={`${track.id}-${index}`}
-                  aria-label={`${track.name} step ${index + 1}`}
+                  aria-label={`${track.name} step ${index + 1} ${active ? 'on' : 'off'}`}
+                  aria-pressed={active}
+                  onClick={() => onToggleStep(track.id, index)}
                 />
               ))}
             </div>

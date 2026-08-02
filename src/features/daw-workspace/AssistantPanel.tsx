@@ -1,4 +1,24 @@
-﻿export function AssistantPanel() {
+﻿interface LessonObjective {
+  id: string;
+  label: string;
+  complete: boolean;
+}
+
+interface AssistantPanelProps {
+  canSubmit: boolean;
+  lessonObjectives: LessonObjective[];
+  onSubmitAssignment: () => void;
+  progress: number;
+  submissionMessage: string;
+}
+
+export function AssistantPanel({
+  canSubmit,
+  lessonObjectives,
+  onSubmitAssignment,
+  progress,
+  submissionMessage,
+}: AssistantPanelProps) {
   const actions = [
     'Explain EQ',
     'Fix my Mix',
@@ -33,12 +53,13 @@
         <h2>Today's Lesson</h2>
         <strong>Build an Afro House Groove</strong>
         <ul>
-          <li className="done">Kick</li>
-          <li className="done">Clap</li>
-          <li>Bass</li>
-          <li>Melody</li>
+          {lessonObjectives.map((objective) => (
+            <li className={objective.complete ? 'done' : undefined} key={objective.id}>
+              {objective.label}
+            </li>
+          ))}
         </ul>
-        <span className="xp-pill">+25 XP</span>
+        <span className="xp-pill">+{Math.max(25, progress)} XP potential</span>
       </section>
 
       <section className="assistant-card feedback-card">
@@ -46,10 +67,12 @@
         <div className="feedback-row">
           <span className="avatar">LA</span>
           <p>
-            <strong>Great progress!</strong>Your groove is solid. Try reducing your kick
-            velocity slightly.
+            <strong>{progress >= 100 ? 'Ready to submit!' : 'Keep building.'}</strong>
+            {progress >= 100
+              ? 'Your groove meets all current lesson objectives.'
+              : 'Complete the remaining groove objectives before submitting.'}
           </p>
-          <div className="score-ring">82%</div>
+          <div className="score-ring">{progress}%</div>
         </div>
       </section>
 
@@ -61,7 +84,10 @@
           <span />
         </div>
         <p>Deadline: 7 days</p>
-        <button type="button">Submit</button>
+        <button type="button" disabled={!canSubmit} onClick={onSubmitAssignment}>
+          {canSubmit ? 'Submit' : 'Complete objectives'}
+        </button>
+        {submissionMessage && <p className="submission-message">{submissionMessage}</p>}
       </section>
     </aside>
   );

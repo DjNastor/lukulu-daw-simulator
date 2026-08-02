@@ -1,6 +1,10 @@
 ﻿import { DawLogo } from './DawLogo';
 
-export function DawTopBar() {
+interface DawTopBarProps {
+  progress: number;
+}
+
+export function DawTopBar({ progress }: DawTopBarProps) {
   return (
     <header className="daw-topbar">
       <DawLogo />
@@ -41,9 +45,9 @@ export function DawTopBar() {
       <div className="progress-widget">
         <span>Progress</span>
         <div>
-          <i />
+          <i style={{ width: `${progress}%` }} />
         </div>
-        <strong>63%</strong>
+        <strong>{progress}%</strong>
       </div>
       <div className="student-chip">
         <span>DN</span>
